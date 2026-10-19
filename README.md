@@ -204,7 +204,3 @@ To update the module:
 
 ---
 
-## 7. License
-
-Specify the license for this project in the repository.
-
