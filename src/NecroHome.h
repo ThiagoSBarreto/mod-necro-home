@@ -9,5 +9,3 @@ public: NecroHome();
 
     void OnPlayerCreate(Player* player) override;
 };
-
-void Addmod_necro_home();
