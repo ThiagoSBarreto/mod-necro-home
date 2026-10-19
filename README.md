@@ -27,6 +27,7 @@ Features can be enabled or disabled individually through the module configuratio
     - Starts with 4 36-slot bags
     - Starts with all basic professions tools
     - Incress Cloth, Ore and Skins drop ammount
+    - Incress item stack-size to 5000
     - Set all quest items to have 100% drop chance
     - Includes backup original values
     - Includes rollback scripts
