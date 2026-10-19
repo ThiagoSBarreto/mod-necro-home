@@ -171,7 +171,7 @@ void NecroHome::OnPlayerCreate(Player* player)
     GivePlayerBankBagsForNewPlayer(player);
 }
 
-void AddSC_mod_necro_home()
+void Addmod_necro_homeScripts()
 {
     new NecroHome();
 }
