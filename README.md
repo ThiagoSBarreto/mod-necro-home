@@ -34,6 +34,8 @@ Features can be enabled or disabled individually through the module configuratio
 > [!NOTE]
 > If you don't want those SQL updates, remove them from the ```data/sql/world/base```
 
+> [!INFO]
+> To restore all SQL modifications, run the Rollback.sql (root of the repo)
 ---
 
 ## 1. Installation
