@@ -1,9 +1,6 @@
 -- Backup original values
-CREATE TABLE IF NOT EXISTS creature_loot_template_backup
-LIKE creature_loot_template;
-
-INSERT IGNORE INTO creature_loot_template_backup
-SELECT *
+CREATE TABLE IF NOT EXISTS creature_loot_template_backup AS
+SELECT Entry, Chance, QuestRequired
 FROM creature_loot_template
 WHERE QuestRequired = 1;
 
