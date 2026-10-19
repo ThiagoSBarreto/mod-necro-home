@@ -1,6 +1,6 @@
 # NecroHome Module
 
-Quality-of-life tweaks and fun extras for solo play and casual gameplay.
+A bunch of quality-of-life improvements and shenanigans to save time while playing solo or enjoying a more casual gameplay experience.
 
 [![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-support-ff69b4?logo=github)](https://github.com/sponsors/ThiagoSBarreto)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FFDD00?logo=buymeacoffee&logoColor=black&style=flat)](https://buymeacoffee.com/thiagosbarreto)
