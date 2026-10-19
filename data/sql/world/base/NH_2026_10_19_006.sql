@@ -1,22 +1,21 @@
 -- Backup original values
-CREATE TABLE IF NOT EXISTS gameobject_loot_template_backup_gathering
-LIKE gameobject_loot_template;
+CREATE TABLE IF NOT EXISTS gameobject_loot_template_backup_gathering AS
+SELECT Entry, Item, MinCount, MaxCount
+FROM gameobject_loot_template
+WHERE Comment LIKE '%Vein%Ore';
 
 INSERT IGNORE INTO gameobject_loot_template_backup_gathering
-SELECT *
+SELECT Entry, Item, MinCount, MaxCount
 FROM gameobject_loot_template
-WHERE Comment LIKE '%Vein%Ore'
-   OR Comment LIKE '%Deposit%Ore'
-   OR Comment REGEXP '^(.+) - \\1$';
+WHERE Comment LIKE '%Deposit%Ore';
+
+INSERT IGNORE INTO gameobject_loot_template_backup_gathering
+SELECT Entry, Item, MinCount, MaxCount
+FROM gameobject_loot_template
+WHERE Comment REGEXP '^(.+) - \\1$';
 
 -- Double Veins and Deposits drop
-UPDATE gameobject_loot_template AS loot
-JOIN gameobject_loot_template_backup_gathering AS backup
-    ON loot.Entry = backup.Entry
-    AND loot.Item = backup.Item
-    AND loot.Reference = backup.Reference
-    AND loot.LootMode = backup.LootMode
-    AND loot.GroupId = backup.GroupId
-SET
-    loot.MinCount = backup.MinCount * 2,
-    loot.MaxCount = backup.MaxCount * 2;
+UPDATE gameobject_loot_template i
+JOIN gameobject_loot_template_backup_gathering b on i.Entry = b.Entry AND i.Item = b.Item 
+SET i.MinCount = b.MinCount * 2, i.MaxCount = b.MaxCount * 2
+WHERE i.Entry = b.Entry AND i.Item = b.Item;
