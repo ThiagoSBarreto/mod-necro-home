@@ -1,5 +1,6 @@
 #include "NecroHome.h"
 
+#include "Player.h"
 #include "Config.h"
 #include "DatabaseEnv.h"
 #include "Item.h"
@@ -157,6 +158,14 @@ namespace
             player->learnSpell(mountSpellId);
         }
     }
+
+    void GiveInitialGold(Player* player)
+    {
+        uint32 initialGold = sConfigMgr->GetOption<uint32>("StartGoldAmmount", 0);
+        constexpr uint32 copperPerGold = 10000;
+
+        player->ModifyMoney(initialGold * copperPerGold);
+    }
 }
 
 NecroHome::NecroHome()
@@ -164,11 +173,17 @@ NecroHome::NecroHome()
 {
 }
 
-void NecroHome::OnPlayerCreate(Player* player)
+void NecroHome::OnPlayerFirstLogin(Player* player)
 {
     LearnAllProfessionsForNewPlayer(player);
     LearnInitialMountForNewPlayer(player);
     GivePlayerBankBagsForNewPlayer(player);
+    GiveInitialGold(player);
+}
+
+void NecroHome::OnPlayerLogin(Player* player) 
+{
+    ChatHandler(player->GetSession()).PSendSysMessage("This server uses NecroHome module");
 }
 
 void Addmod_necro_homeScripts()

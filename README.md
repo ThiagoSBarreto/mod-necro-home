@@ -23,6 +23,7 @@ Features can be enabled or disabled individually through the module configuratio
 - **All Professions:** Learn all supported primary and secondary profession spells when creating a character.
 - **Bank Bags:** Unlock all bank bag slots and receive 36-slot bags.
 - **Starting Mount:** Learn riding and receive a racial mount.
+- **Starting Gold:** Players can start with gold.
 - **SQL Scripts:** 
     - Starts with 4 36-slot bags
     - Starts with all basic professions tools
