@@ -21,8 +21,11 @@ Features can be enabled or disabled individually through the module configuratio
 ## Features
 
 - **All Professions:** Learn all supported primary and secondary profession spells when creating a character.
+    - Configurable wich profession will the player start with
 - **Bank Bags:** Unlock all bank bag slots and receive 36-slot bags.
+    - The equiped bag can be changed or set to `0`, so nome will be equiped
 - **Starting Mount:** Learn riding and receive a racial mount.
+    - All initial mounts can be configured by race
 - **Starting Gold:** Players can start with gold.
 - **SQL Scripts:** 
     - Starts with 4 36-slot bags
@@ -32,8 +35,11 @@ Features can be enabled or disabled individually through the module configuratio
     - Set all quest items to have 100% drop chance
     - Includes backup original values
     - Includes rollback scripts
+
 > [!NOTE]
-> If you don't want those SQL updates, remove them from the ```data/sql/world/base```
+> If you don't want those SQL updates, remove them from the ```data``` folder
+
+> [!NOTE]
 > To restore all SQL modifications, run the Rollback.sql (root of the repo)
 
 ---

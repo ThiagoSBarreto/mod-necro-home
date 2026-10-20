@@ -1,4 +1,96 @@
-StartWithAllProfessions = 1
+[worldserver]
+
+###################################################################################################
+# MOD TRAVELER'S RECALL
+#
+
+#
+#   Show Welcome Message
+#       Description: Enable or disable if the message "This server uses NecroHome module" on player login
+#       Default:        1 (enabled)
+#                       0 (disabled)
+#
+
+ShowWelcomeMessage = 1
+
+#
+#   Start With Professions
+#       Description: Enable or disable if the player will start with professions
+#       Default:        1 (enabled)
+#                       0 (disabled)
+#
+
+StartWithAlchemy = 1
+StartWithBlacksmithing = 1
+StartWithEnchanting = 1
+StartWithEngineering = 1
+StartWithHerbalism = 1
+StartWithInscription = 1
+StartWithJewelcrafting = 1
+StartWithLeatherworking = 1
+StartWithMining = 1
+StartWithSkinning = 1
+StartWithTailoring = 1
+StartWithCooking = 1
+StartWithFirstAid = 1
+StartWithFishing = 1
+
+#
+#   Start With All Bank
+#       Description: Enable or disable if the player will start with all bank slots unlocked
+#       Default:        1 (enabled)
+#                       0 (disabled)
+#
+
 StartWithAllBankBags = 1
+
+#
+#   Bank Bag Item Id
+#       Description: The bag item id that will be equiped in the bank slots
+#       Default:        23162 (Foror's Crate of Endless Resist Gear Storage)
+#
+
+BankBagItemId = 23162
+
+#
+#   Start With Mount
+#       Description: Enable or disable if the player will start with basic mount skill and a 60% mount
+#       Default:        1 (enabled)
+#                       0 (disabled)
+#
+
 StartWithMount = 1
+
+#
+#   Race Mount ID
+#       Description: The mount id to wich each race will start the game
+#       Default:        Human = 458 (Brown Horse)
+#                       Orc = 459 (Brown Wolf)
+#                       Dwarf = 6899 (Drown Ram)
+#                       Nightelf = 10789 (Spotted Frostsaber)
+#                       Undead = 17462 (Red Skeletal Horse)
+#                       Tauren = 18990 (Brown Kodo)
+#                       Gnome = 17453 (Green Mechanostrider)
+#                       Troll = 17464 (Brown Raptor)
+#                       Bloodelf = 34795 (Red Hawkstrider)
+#                       Draenei = 34406 (Brown Elekk)
+#
+
+StartMountIdHuman = 458
+StartMountIdOrc = 459
+StartMountIdDwarf = 6899
+StartMountIdNightelf = 10789
+StartMountIdUndead = 17462
+StartMountIdTauren = 18990
+StartMountIdGnome = 17453
+StartMountIdTroll = 17464
+StartMountIdBloodelf = 34795
+StartMountIdDraenei = 34406
+
+#
+#   Start Gold
+#       Description: Set the ammount of gold the player will start the game with
+#       Default:        5000
+#
+
 StartGoldAmmount = 5000

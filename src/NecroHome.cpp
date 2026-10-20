@@ -10,39 +10,77 @@ namespace
 {
     void LearnAllProfessionsForNewPlayer(Player* player)
     {
-        if (!sConfigMgr->GetOption<bool>("StartWithAllProfessions", false))
-        {
-            return;
+        /*
+        2259    Alchemy
+        2018    Blacksmithing
+        7411    Enchanting
+        4036    Engineering
+        2366    Herbalism
+        45357   Inscription
+        25229   Jewelcrafting
+        2108    Leatherworking
+        2575    Mining
+        8613    Skinning
+        3908    Tailoring
+        2550    Cooking
+        3273    First Aid
+        7620    Fishing
+        */
+
+        if (sConfigMgr->GetOption<bool>("StartWithAlchemy", false)) {
+            player->learnSpell(2259);
         }
 
-        static constexpr uint32 professionSpells[] =
-        {
-            2259,   // Alchemy
-            2018,   // Blacksmithing
-            7411,   // Enchanting
-            4036,   // Engineering
-            2366,   // Herbalism
-            45357,  // Inscription
-            25229,  // Jewelcrafting
-            2108,   // Leatherworking
-            2575,   // Mining
-            8613,   // Skinning
-            3908,   // Tailoring
-            2550,   // Cooking
-            3273,   // First Aid
-            7620    // Fishing
-        };
+        if (sConfigMgr->GetOption<bool>("StartWithBlacksmithing", false)) {
+            player->learnSpell(2018);
+        }
 
-        for (uint32 spellId : professionSpells)
-        {
-            if (!player->IsInWorld())
-            {
-                player->addSpell(spellId, SPEC_MASK_ALL, true);
-            }
-            else
-            {
-                player->learnSpell(spellId);
-            }
+        if (sConfigMgr->GetOption<bool>("StartWithEnchanting", false)) {
+            player->learnSpell(7411);
+        }
+
+        if (sConfigMgr->GetOption<bool>("StartWithEngineering", false)) {
+            player->learnSpell(4036);
+        }
+
+        if (sConfigMgr->GetOption<bool>("StartWithHerbalism", false)) {
+            player->learnSpell(2366);
+        }
+
+        if (sConfigMgr->GetOption<bool>("StartWithInscription", false)) {
+            player->learnSpell(45357);
+        }
+
+        if (sConfigMgr->GetOption<bool>("StartWithJewelcrafting", false)) {
+            player->learnSpell(25229);
+        }
+
+        if (sConfigMgr->GetOption<bool>("StartWithLeatherworking", false)) {
+            player->learnSpell(2108);
+        }
+
+        if (sConfigMgr->GetOption<bool>("StartWithMining", false)) {
+            player->learnSpell(2575);
+        }
+
+        if (sConfigMgr->GetOption<bool>("StartWithSkinning", false)) {
+            player->learnSpell(8613);
+        }
+
+        if (sConfigMgr->GetOption<bool>("StartWithTailoring", false)) {
+            player->learnSpell(3908);
+        }
+
+        if (sConfigMgr->GetOption<bool>("StartWithCooking", false)) {
+            player->learnSpell(2550);
+        }
+
+        if (sConfigMgr->GetOption<bool>("StartWithFirstAid", false)) {
+            player->learnSpell(3273);
+        }
+        
+        if (sConfigMgr->GetOption<bool>("StartWithFishing", false)) {
+            player->learnSpell(7620);
         }
     }
 
@@ -53,7 +91,11 @@ namespace
             return;
         }
 
-        constexpr uint32 bagEntry = 23162;
+        uint32 bagEntry = sConfigMgr->GetOption<uint32>("BankBagItemId", 0);
+
+        if (bagEntry <= 0) {
+            return;
+        }
 
         player->SetBankBagSlotCount(BANK_SLOT_BAG_END - BANK_SLOT_BAG_START);
 
@@ -101,43 +143,43 @@ namespace
         switch (player->getRace())
         {
             case RACE_HUMAN:
-                mountSpellId = 458;     // Brown Horse
+                mountSpellId = sConfigMgr->GetOption<uint32>("StartMountIdHuman", 0);
                 break;
 
             case RACE_ORC:
-                mountSpellId = 459;     // Brown Wolf
+                mountSpellId = sConfigMgr->GetOption<uint32>("StartMountIdOrc", 0);
                 break;
 
             case RACE_DWARF:
-                mountSpellId = 6899;    // Brown Ram
+                mountSpellId = sConfigMgr->GetOption<uint32>("StartMountIdDwarf", 0);
                 break;
 
             case RACE_NIGHTELF:
-                mountSpellId = 10789;   // Spotted Frostsaber
+                mountSpellId = sConfigMgr->GetOption<uint32>("StartMountIdNightelf", 0);
                 break;
 
             case RACE_UNDEAD_PLAYER:
-                mountSpellId = 17462;   // Red Skeletal Horse
+                mountSpellId = sConfigMgr->GetOption<uint32>("StartMountIdUndead", 0);
                 break;
 
             case RACE_TAUREN:
-                mountSpellId = 18990;   // Brown Kodo
+                mountSpellId = sConfigMgr->GetOption<uint32>("StartMountIdTauren", 0);
                 break;
 
             case RACE_GNOME:
-                mountSpellId = 17453;   // Green Mechanostrider
+                mountSpellId = sConfigMgr->GetOption<uint32>("StartMountIdGnome", 0);
                 break;
 
             case RACE_TROLL:
-                mountSpellId = 17464;   // Brown Raptor
+                mountSpellId = sConfigMgr->GetOption<uint32>("StartMountIdTroll", 0);
                 break;
 
             case RACE_BLOODELF:
-                mountSpellId = 34795;   // Red Hawkstrider
+                mountSpellId = sConfigMgr->GetOption<uint32>("StartMountIdBloodelf", 0);
                 break;
 
             case RACE_DRAENEI:
-                mountSpellId = 34406;   // Brown Elekk
+                mountSpellId = sConfigMgr->GetOption<uint32>("StartMountIdDraenei", 0);
                 break;
 
             default:
@@ -183,6 +225,10 @@ void NecroHome::OnPlayerFirstLogin(Player* player)
 
 void NecroHome::OnPlayerLogin(Player* player) 
 {
+    if (!sConfigMgr->GetOption<bool>("ShowWelcomeMessage", false)) {
+        return;
+    }
+    
     ChatHandler(player->GetSession()).PSendSysMessage("This server uses NecroHome module");
 }
 
