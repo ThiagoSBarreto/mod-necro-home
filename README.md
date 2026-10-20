@@ -20,27 +20,27 @@ Features can be enabled or disabled individually through the module configuratio
 
 ## Features
 
-- **All Professions:** Learn all supported primary and secondary profession spells when creating a character.
-    - Configurable wich profession will the player start with
-- **Bank Bags:** Unlock all bank bag slots and receive 36-slot bags.
-    - The equiped bag can be changed or set to `0`, so nome will be equiped
+- **All Professions:** Learn configured primary and secondary profession spells when creating a character.
+  - Each profession can be enabled or disabled individually.
+- **Bank Bags:** Unlock all bank bag slots and configure which bag item will be equipped.
+  - The equipped bag can be changed by configuring its item ID.
 - **Starting Mount:** Learn riding and receive a racial mount.
-    - All initial mounts can be configured by race
-- **Starting Gold:** Players can start with gold.
-- **SQL Scripts:** 
-    - Starts with 4 36-slot bags
-    - Starts with all basic professions tools
-    - Incress Cloth, Ore and Skins drop ammount
-    - Incress item stack-size to 5000
-    - Set all quest items to have 100% drop chance
-    - Includes backup original values
-    - Includes rollback scripts
+  - All initial mounts can be configured by race.
+- **Starting Gold:** Players can start with a configurable amount of gold.
+- **SQL Scripts:**
+  - Starts with 4 36-slot bags.
+  - Starts with all basic professions tools.
+  - Increase Cloth, Ore and Skins drop amount.
+  - Increase item stack-size to 5000.
+  - Set all quest items to have 100% drop chance.
+  - Includes backup original values.
+  - Includes rollback scripts.
 
 > [!NOTE]
-> If you don't want those SQL updates, remove them from the ```data``` folder
+> If you don't want those SQL updates, remove them from the `data` folder.
 
 > [!NOTE]
-> To restore all SQL modifications, run the Rollback.sql (root of the repo)
+> To restore all SQL modifications, run the `Rollback.sql` (root of the repo).
 
 ---
 
@@ -95,18 +95,35 @@ Restart `worldserver` after changing the configuration.
 
 ## 2. Configuration
 
-Each feature can be enabled independently.
+Each feature can be enabled or disabled independently through the configuration file.
 
 ### 2.1. All Professions
 
+Configure which professions characters learn when created.
+
 ```ini
-StartWithAllProfessions = 0
+StartWithAlchemy = 1
+StartWithBlacksmithing = 1
+StartWithEnchanting = 1
+StartWithEngineering = 1
+StartWithHerbalism = 1
+StartWithInscription = 1
+StartWithJewelcrafting = 1
+StartWithLeatherworking = 1
+StartWithMining = 1
+StartWithSkinning = 1
+StartWithTailoring = 1
+StartWithCooking = 1
+StartWithFirstAid = 1
+StartWithFishing = 1
 ```
 
-- `0` (default): Characters do not receive the additional profession spells.
-- `1`: Characters learn all configured profession spells when created.
+Each setting accepts:
 
-The configured spells include:
+- `0`: The character does not receive the corresponding profession spells.
+- `1`: The character learns the corresponding profession spells when created.
+
+The configurable professions and secondary skills include:
 
 - Alchemy
 - Blacksmithing
@@ -129,44 +146,93 @@ The configured spells include:
 ### 2.2. Bank Bags
 
 ```ini
-StartWithAllBankBags = 0
+StartWithAllBankBags = 1
+BankBagItemId = 23162
 ```
 
-- `0` (default): Characters do not receive additional bank bags.
-- `1`: Characters unlock all bank bag slots and receive 36-slot bags.
+**`StartWithAllBankBags`**
 
-This feature is intended to reduce inventory management and storage limitations.
+- `0`: Characters do not receive the additional bank bag slots.
+- `1`: Characters unlock all bank bag slots.
+
+**`BankBagItemId`**
+
+Defines the item ID of the bag equipped in the unlocked bank slots.
+
+Default: `23162` (Foror's Crate of Endless Resist Gear Storage).
+
+You can change this value to use a different bag item. Set it to `0` if you do not want a bag equipped in those slots.
 
 ### 2.3. Starting Mount
 
 ```ini
-StartWithMount = 0
+StartWithMount = 1
 ```
 
-- `0` (default): Characters do not receive the additional riding spell or racial mount.
-- `1`: Characters learn the configured riding spell and receive a mount based on their race.
+- `0`: Characters do not receive the additional riding skill or starting mount.
+- `1`: Characters learn the configured riding skill and receive a mount based on their race.
 
-Supported races:
+The mount IDs can be configured individually for each playable race.
 
-| Race | Mount |
-|---|---|
-| Human | Brown Horse |
-| Orc | Brown Wolf |
-| Dwarf | Brown Ram |
-| Night Elf | Spotted Frostsaber |
-| Undead | Red Skeletal Horse |
-| Tauren | Brown Kodo |
-| Gnome | Green Mechanostrider |
-| Troll | Brown Raptor |
-| Blood Elf | Red Hawkstrider |
-| Draenei | Brown Elekk |
+| Race | Configuration | Default Mount ID | Mount |
+|---|---|---:|---|
+| Human | `StartMountIdHuman` | 458 | Brown Horse |
+| Orc | `StartMountIdOrc` | 459 | Brown Wolf |
+| Dwarf | `StartMountIdDwarf` | 6899 | Brown Ram |
+| Night Elf | `StartMountIdNightelf` | 10789 | Spotted Frostsaber |
+| Undead | `StartMountIdUndead` | 17462 | Red Skeletal Horse |
+| Tauren | `StartMountIdTauren` | 18990 | Brown Kodo |
+| Gnome | `StartMountIdGnome` | 17453 | Green Mechanostrider |
+| Troll | `StartMountIdTroll` | 17464 | Brown Raptor |
+| Blood Elf | `StartMountIdBloodelf` | 34795 | Red Hawkstrider |
+| Draenei | `StartMountIdDraenei` | 34406 | Brown Elekk |
+
+Example configuration:
+
+```ini
+StartMountIdHuman = 458
+StartMountIdOrc = 459
+StartMountIdDwarf = 6899
+StartMountIdNightelf = 10789
+StartMountIdUndead = 17462
+StartMountIdTauren = 18990
+StartMountIdGnome = 17453
+StartMountIdTroll = 17464
+StartMountIdBloodelf = 34795
+StartMountIdDraenei = 34406
+```
+
+Change any mount ID to customize the starting mount for that race.
+
+### 2.4. Starting Gold
+
+```ini
+StartGoldAmmount = 5000
+```
+
+Sets the amount of gold a character receives when created.
+
+Set the value to `0` if you do not want to grant starting gold.
+
+---
+
+### 2.5. Welcome Message
+
+```ini
+ShowWelcomeMessage = 1
+```
+
+Controls whether the module displays the welcome message when a player logs in.
+
+- `0`: Disable the welcome message.
+- `1`: Enable the welcome message.
 
 ---
 
 ## 3. Notes
 
 - Features are controlled independently through the configuration file.
-- The default configuration leaves all features disabled.
+- The default configuration enables the listed features and welcome message with the values shown above.
 - The module is intended for AzerothCore with the World of Warcraft 3.3.5a client.
 - The current implementation handles starting bonuses during character creation.
 - Existing characters are not automatically updated by the character-creation hook.
@@ -211,4 +277,3 @@ To update the module:
 5. Restart `worldserver`.
 
 ---
-
