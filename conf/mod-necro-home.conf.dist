@@ -11,7 +11,7 @@
 #                       0 (disabled)
 #
 
-ShowWelcomeMessage = 1
+NecroHome.ShowWelcomeMessage = 1
 
 #
 #   Start With Professions
@@ -20,20 +20,99 @@ ShowWelcomeMessage = 1
 #                       0 (disabled)
 #
 
-StartWithAlchemy = 1
-StartWithBlacksmithing = 1
-StartWithEnchanting = 1
-StartWithEngineering = 1
-StartWithHerbalism = 1
-StartWithInscription = 1
-StartWithJewelcrafting = 1
-StartWithLeatherworking = 1
-StartWithMining = 1
-StartWithSkinning = 1
-StartWithTailoring = 1
-StartWithCooking = 1
-StartWithFirstAid = 1
-StartWithFishing = 1
+NecroHome.StartWithAlchemy = 1
+NecroHome.StartWithBlacksmithing = 1
+NecroHome.StartWithEnchanting = 1
+NecroHome.StartWithEngineering = 1
+NecroHome.StartWithHerbalism = 1
+NecroHome.StartWithInscription = 1
+NecroHome.StartWithJewelcrafting = 1
+NecroHome.StartWithLeatherworking = 1
+NecroHome.StartWithMining = 1
+NecroHome.StartWithSkinning = 1
+NecroHome.StartWithTailoring = 1
+NecroHome.StartWithCooking = 1
+NecroHome.StartWithFirstAid = 1
+NecroHome.StartWithFishing = 1
+
+#
+#   Start With All Bags
+#       Description: Enable or disable if the player will start with all 4 Bags
+#       Default:        1 (enabled)
+#                       0 (disabled)
+#
+
+NecroHome.StartWithAllBags = 1
+
+#
+#   Bag Item Id
+#       Description: The bag item id that will be equiped in the slots
+#       Default:        23162 (Foror's Crate of Endless Resist Gear Storage)
+#
+
+NecroHome.BagItemId = 23162
+
+#
+#   Start with Mining Pick
+#       Description: Enable or disable if the player will start with a Mining Pick
+#       Default:        1 (enabled)
+#                       0 (disabled)
+#
+
+NecroHome.StartWithMiningPink = 1
+
+#
+#   Start with Skinning Knife
+#       Description: Enable or disable if the player will start a Skinning Knife
+#       Default:        1 (enabled)
+#                       0 (disabled)
+#
+
+NecroHome.StartWithSkinningKnife = 1
+
+#
+#   Start with Fishing Pole
+#       Description: Enable or disable if the player will start a Fishing Pole
+#       Default:        1 (enabled)
+#                       0 (disabled)
+#
+
+NecroHome.StartWithFishingPole = 1
+
+#
+#   Start with Blacksmith Hammer
+#       Description: Enable or disable if the player will start a Blacksmith Hammer
+#       Default:        1 (enabled)
+#                       0 (disabled)
+#
+
+NecroHome.StartWithBlacksmithHammer = 1
+
+#
+#   Start with Flint and Tinder
+#       Description: Enable or disable if the player will start a Flint and Tinder
+#       Default:        1 (enabled)
+#                       0 (disabled)
+#
+
+NecroHome.StartWithFlintAndTinder = 1
+
+#
+#   Start with Simple Wood
+#       Description: Enable or disable if the player will start Simple Wood
+#       Default:        1 (enabled)
+#                       0 (disabled)
+#
+
+NecroHome.StartWithSimpleWood = 1
+
+#
+#   Simple Wood Start ammount
+#       Description: Define how many Simple Wood the player will start with
+#       Default:        5000
+#
+
+NecroHome.SimpleWoodStartAmmount = 5000
 
 #
 #   Start With All Bank
@@ -42,7 +121,7 @@ StartWithFishing = 1
 #                       0 (disabled)
 #
 
-StartWithAllBankBags = 1
+NecroHome.StartWithAllBankBags = 1
 
 #
 #   Bank Bag Item Id
@@ -50,7 +129,7 @@ StartWithAllBankBags = 1
 #       Default:        23162 (Foror's Crate of Endless Resist Gear Storage)
 #
 
-BankBagItemId = 23162
+NecroHome.BankBagItemId = 23162
 
 #
 #   Start With Mount
@@ -59,7 +138,7 @@ BankBagItemId = 23162
 #                       0 (disabled)
 #
 
-StartWithMount = 1
+NecroHome.StartWithMount = 1
 
 #
 #   Race Mount ID
@@ -76,16 +155,16 @@ StartWithMount = 1
 #                       Draenei = 34406 (Brown Elekk)
 #
 
-StartMountIdHuman = 458
-StartMountIdOrc = 459
-StartMountIdDwarf = 6899
-StartMountIdNightelf = 10789
-StartMountIdUndead = 17462
-StartMountIdTauren = 18990
-StartMountIdGnome = 17453
-StartMountIdTroll = 17464
-StartMountIdBloodelf = 34795
-StartMountIdDraenei = 34406
+NecroHome.StartMountIdHuman = 458
+NecroHome.StartMountIdOrc = 459
+NecroHome.StartMountIdDwarf = 6899
+NecroHome.StartMountIdNightelf = 10789
+NecroHome.StartMountIdUndead = 17462
+NecroHome.StartMountIdTauren = 18990
+NecroHome.StartMountIdGnome = 17453
+NecroHome.StartMountIdTroll = 17464
+NecroHome.StartMountIdBloodelf = 34795
+NecroHome.StartMountIdDraenei = 34406
 
 #
 #   Start Gold
@@ -93,4 +172,4 @@ StartMountIdDraenei = 34406
 #       Default:        5000
 #
 
-StartGoldAmmount = 5000
+NecroHome.StartGoldAmmount = 5000
