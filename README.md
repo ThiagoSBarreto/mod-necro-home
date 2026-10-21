@@ -22,14 +22,17 @@ Features can be enabled or disabled individually through the module configuratio
 
 - **All Professions:** Learn all supported primary and secondary profession spells when creating a character.
     - Configurable wich profession will the player start with
-- **Bank Bags:** Unlock all bank bag slots and receive 36-slot bags.
+- **Inventory Bags:** Start with bags.
+    - The initial bags can be changed or set to `0`, so nome will be equiped
+- **Bank Bags:** Unlock all bank bag slots and receive bags.
     - The equiped bag can be changed or set to `0`, so nome will be equiped
 - **Starting Mount:** Learn riding and receive a racial mount.
     - All initial mounts can be configured by race
+- **Start with Tools:** Player can start with professions tools
+    - Configurable wich tools the player start with
 - **Starting Gold:** Players can start with gold.
-- **SQL Scripts:** 
-    - Starts with 4 36-slot bags
-    - Starts with all basic professions tools
+    - Configurable wich ammount of gold player start with
+- **SQL Scripts:**
     - Incress Cloth, Ore and Skins drop ammount
     - Incress item stack-size to 5000
     - Set all quest items to have 100% drop chance
@@ -41,6 +44,9 @@ Features can be enabled or disabled individually through the module configuratio
 
 > [!NOTE]
 > To restore all SQL modifications, run the Rollback.sql (root of the repo)
+
+> [!NOTE]
+> Nome of this works for Bots or Headless clients
 
 ---
 
@@ -97,58 +103,109 @@ Restart `worldserver` after changing the configuration.
 
 Each feature can be enabled independently.
 
-### 2.1. All Professions
+### 2.1. Welcome Message
 
 ```ini
-StartWithAllProfessions = 0
+NecroHome.ShowWelcomeMessage = 1
 ```
 
-- `0` (default): Characters do not receive the additional profession spells.
-- `1`: Characters learn all configured profession spells when created.
+- `0`: Disables the welcome message displayed when a player logs in.
+- `1` (default): Displays the message "This server uses NecroHome module" when a player logs in.
 
-The configured spells include:
+### 2.2. All Professions
 
-- Alchemy
-- Blacksmithing
-- Enchanting
-- Engineering
-- Herbalism
-- Inscription
-- Jewelcrafting
-- Leatherworking
-- Mining
-- Skinning
-- Tailoring
-- Cooking
-- First Aid
-- Fishing
+Each profession can be enabled or disabled independently.
+
+```ini
+StartWithAlchemy = 1
+StartWithBlacksmithing = 1
+StartWithEnchanting = 1
+StartWithEngineering = 1
+StartWithHerbalism = 1
+StartWithInscription = 1
+StartWithJewelcrafting = 1
+StartWithLeatherworking = 1
+StartWithMining = 1
+StartWithSkinning = 1
+StartWithTailoring = 1
+StartWithCooking = 1
+StartWithFirstAid = 1
+StartWithFishing = 1
+```
+
+- `0`: The character does not receive the corresponding profession spells.
+- `1` (default): The character learns the corresponding profession spells when created.
 
 > [!NOTE]
 > This feature teaches the configured spells. It does not automatically grant maximum profession skill, every recipe, or every specialization.
 
-### 2.2. Bank Bags
+### 2.3. Inventory Bags
 
 ```ini
-StartWithAllBankBags = 0
+NecroHome.StartWithAllBags = 1
+NecroHome.BagItemId = 23162
 ```
 
-- `0` (default): Characters do not receive additional bank bags.
-- `1`: Characters unlock all bank bag slots and receive 36-slot bags.
+**StartWithAllBags**
 
-This feature is intended to reduce inventory management and storage limitations.
+- `0`: Characters do not receive additional inventory bags.
+- `1` (default): Characters receive bags in all four inventory bag slots.
 
-### 2.3. Starting Mount
+**BagItemId**
+
+Defines the item ID of the bag equipped in the inventory bag slots.
+
+- `23162` (default): Foror's Crate of Endless Resist Gear Storage.
+- `0`: No bag will be equipped.
+
+Change the item ID to use a different bag.
+
+### 2.4. Bank Bags
 
 ```ini
-StartWithMount = 0
+NecroHome.StartWithAllBankBags = 1
+NecroHome.BankBagItemId = 23162
 ```
 
-- `0` (default): Characters do not receive the additional riding spell or racial mount.
-- `1`: Characters learn the configured riding spell and receive a mount based on their race.
+**StartWithAllBankBags**
 
-Supported races:
+- `0`: Characters do not receive additional bank bag slots or bags.
+- `1` (default): Characters unlock all bank bag slots and receive bags.
 
-| Race | Mount |
+**BankBagItemId**
+
+Defines the item ID of the bag equipped in the bank bag slots.
+
+- `23162` (default): Foror's Crate of Endless Resist Gear Storage.
+- `0`: No bag will be equipped.
+
+Change the item ID to use a different bag.
+
+### 2.5. Starting Mount
+
+```ini
+NecroHome.StartWithMount = 1
+```
+
+- `0`: Characters do not receive the additional riding spell or racial mount.
+- `1` (default): Characters learn the configured riding spell and receive a mount based on their race.
+
+The mount IDs can be configured independently for each supported race.
+
+```ini
+NecroHome.StartMountIdHuman = 458
+NecroHome.StartMountIdOrc = 459
+NecroHome.StartMountIdDwarf = 6899
+NecroHome.StartMountIdNightelf = 10789
+NecroHome.StartMountIdUndead = 17462
+NecroHome.StartMountIdTauren = 18990
+NecroHome.StartMountIdGnome = 17453
+NecroHome.StartMountIdTroll = 17464
+NecroHome.StartMountIdBloodelf = 34795
+NecroHome.StartMountIdDraenei = 34406
+```
+
+| Race | Default Mount |
 |---|---|
 | Human | Brown Horse |
 | Orc | Brown Wolf |
@@ -161,6 +218,60 @@ Supported races:
 | Blood Elf | Red Hawkstrider |
 | Draenei | Brown Elekk |
 
+Change the corresponding mount ID to use a different mount for a race.
+
+### 2.6. Starting Tools
+
+Each starting tool can be enabled or disabled independently.
+
+```ini
+NecroHome.StartWithMiningPink = 1
+NecroHome.StartWithSkinningKnife = 1
+NecroHome.StartWithFishingPole = 1
+NecroHome.StartWithBlacksmithHammer = 1
+NecroHome.StartWithFlintAndTinder = 1
+```
+
+- `0`: The character does not receive the corresponding tool.
+- `1` (default): The character receives the corresponding tool when created.
+
+Available tools:
+
+- Mining Pick
+- Skinning Knife
+- Fishing Pole
+- Blacksmith Hammer
+- Flint and Tinder
+
+### 2.7. Starting Simple Wood
+
+```ini
+NecroHome.StartWithSimpleWood = 1
+NecroHome.SimpleWoodStartAmmount = 5000
+```
+
+**StartWithSimpleWood**
+
+- `0`: Characters do not receive Simple Wood.
+- `1` (default): Characters receive Simple Wood when created.
+
+**SimpleWoodStartAmmount**
+
+Defines how many Simple Wood items the character receives.
+
+- `5000` (default): Characters start with 5000 Simple Wood.
+
+### 2.8. Starting Gold
+
+```ini
+NecroHome.StartGoldAmmount = 5000
+```
+
+Defines the amount of gold characters receive when created.
+
+- `5000` (default): Characters start with 5000 gold.
+
+Change the value to set a different starting amount.
 ---
 
 ## 3. Notes
