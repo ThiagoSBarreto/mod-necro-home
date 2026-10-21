@@ -105,8 +105,6 @@ Each feature can be enabled or disabled independently through the configuration 
 
 ### 2.1. Welcome Message
 
-Configure which professions characters learn when created.
-
 ```ini
 NecroHome.ShowWelcomeMessage = 1
 ```
@@ -114,7 +112,7 @@ NecroHome.ShowWelcomeMessage = 1
 - `0`: Disables the welcome message displayed when a player logs in.
 - `1` (default): Displays the message "This server uses NecroHome module" when a player logs in.
 
-### 2.2. All Professions
+### 2.2. Professions
 
 Each profession can be enabled or disabled independently.
 
@@ -236,14 +234,6 @@ NecroHome.StartWithFlintAndTinder = 1
 
 - `0`: The character does not receive the corresponding tool.
 - `1` (default): The character receives the corresponding tool when created.
-
-Available tools:
-
-- Mining Pick
-- Skinning Knife
-- Fishing Pole
-- Blacksmith Hammer
-- Flint and Tinder
 
 ### 2.7. Starting Simple Wood
 
