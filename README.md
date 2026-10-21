@@ -101,9 +101,11 @@ Restart `worldserver` after changing the configuration.
 
 ## 2. Configuration
 
-Each feature can be enabled independently.
+Each feature can be enabled or disabled independently through the configuration file.
 
 ### 2.1. Welcome Message
+
+Configure which professions characters learn when created.
 
 ```ini
 NecroHome.ShowWelcomeMessage = 1
@@ -277,7 +279,7 @@ Change the value to set a different starting amount.
 ## 3. Notes
 
 - Features are controlled independently through the configuration file.
-- The default configuration leaves all features disabled.
+- The default configuration enables the listed features and welcome message with the values shown above.
 - The module is intended for AzerothCore with the World of Warcraft 3.3.5a client.
 - The current implementation handles starting bonuses during character creation.
 - Existing characters are not automatically updated by the character-creation hook.
@@ -322,4 +324,3 @@ To update the module:
 5. Restart `worldserver`.
 
 ---
-
